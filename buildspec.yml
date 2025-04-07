@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - pip install --upgrade awscli
+      - aws --version
+
+  pre_build:
+    commands:
+      - echo "Decrypting Docker password..."
+      - DOCKER_PASSWORD=$(aws ssm get-parameter --name dockerpassword --with-decryption --query 'Parameter.Value' --output text)
+      - echo "Logging in to Docker Hub..."
+      - docker login -u anuroy12 -p $DOCKER_PASSWORD
+      - echo "Building Docker image..."
+      - docker build -t moneymapweb .
+
+  build:
+    commands:
+      - echo "Pushing Docker image to Docker Hub..."
+      - docker push anuroy12/moneymapweb
+
+  post_build:
+    commands:
+      - echo "Cleaning up..."
+      - docker logout
+
+artifacts:
+  files:
+    - '**/*'
+  # name: moneymap-artifact
+  # discard-paths: yes
