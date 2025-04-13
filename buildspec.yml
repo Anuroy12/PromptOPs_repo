@@ -14,7 +14,7 @@ phases:
       - echo "Logging in to Docker Hub..."
       - docker login -u anuroy12 -p $DOCKER_PASSWORD
       - echo "Building Docker image..."
-      - docker build -t moneymapweb -f Dockerfile money-map/
+      - docker build -t moneymapweb -f Dockerfile .
 
   build:
     commands:
