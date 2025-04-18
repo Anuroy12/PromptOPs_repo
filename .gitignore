@@ -12,3 +12,4 @@ override.tf.json
 *_override.tf.json
 
 terraform/modules/ec2/.terraform.lock.hcl
+terraform/modules/jenkins/.terraform.lock.hcl
