@@ -15,3 +15,4 @@ terraform/modules/ec2/.terraform.lock.hcl
 terraform/modules/jenkins/.terraform.lock.hcl
 terraform/modules/kubernetes/.terraform.tfstate.lock.info
 terraform/modules/kubernetes/.terraform.lock.hcl
+terraform/modules/jenfinal/.terraform.lock.hcl
